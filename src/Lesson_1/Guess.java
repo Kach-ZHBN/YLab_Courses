@@ -1,3 +1,5 @@
+package Lesson_1;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -6,23 +8,23 @@ public class Guess {
         try (Scanner scanner = new Scanner(System.in)){
             int number = new Random().nextInt(99) + 1;
             int maxAttempts = 10;
-            System.out.println("Я загадал число от 1 до 99. У тебя " + maxAttempts + " попыток угадать.");
+            System.out.println("РЇ Р·Р°РіР°РґР°Р» С‡РёСЃР»Рѕ РѕС‚ 1 РґРѕ 99. РЈ С‚РµР±СЏ " + maxAttempts + " РїРѕРїС‹С‚РѕРє СѓРіР°РґР°С‚СЊ.");
             do{
                 maxAttempts--;
-                System.out.println("Введи число");
+                System.out.println("Р’РІРµРґРё С‡РёСЃР»Рѕ");
                 int inputValue = scanner.nextInt();
 
                 if(maxAttempts == 0){
-                    System.out.println("Ты не угадал");
+                    System.out.println("РўС‹ РЅРµ СѓРіР°РґР°Р»");
                     break;
                 }
                 if(inputValue == number){
-                    System.out.println("Ты угадал с " + (10-maxAttempts) + " попытки");
+                    System.out.println("РўС‹ СѓРіР°РґР°Р» СЃ " + (10-maxAttempts) + " РїРѕРїС‹С‚РєРё");
                     break;
                 }else if(inputValue < number){
-                    System.out.println("Мое число больше! У тебя осталось " + maxAttempts + " попыток");
+                    System.out.println("РњРѕРµ С‡РёСЃР»Рѕ Р±РѕР»СЊС€Рµ! РЈ С‚РµР±СЏ РѕСЃС‚Р°Р»РѕСЃСЊ " + maxAttempts + " РїРѕРїС‹С‚РѕРє");
                 }else {
-                    System.out.println("Мое число меньше! У тебя осталось " + maxAttempts + " попыток");
+                    System.out.println("РњРѕРµ С‡РёСЃР»Рѕ РјРµРЅСЊС€Рµ! РЈ С‚РµР±СЏ РѕСЃС‚Р°Р»РѕСЃСЊ " + maxAttempts + " РїРѕРїС‹С‚РѕРє");
                 }
             }while(maxAttempts > 0);
         }
