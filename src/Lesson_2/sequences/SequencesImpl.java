@@ -1,6 +1,6 @@
 package Lesson_2.sequences;
 
-public class SequencesImpl implements Sequences{
+public class SequencesImpl implements SequenceGenerator{
 
     @Override
     public void a(int n) {
