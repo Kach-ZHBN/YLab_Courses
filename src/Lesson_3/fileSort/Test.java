@@ -5,7 +5,7 @@ import java.io.IOException;
 
 public class Test {
     public static void main(String[] args) throws IOException {
-        File dataFile = new Generator().generate("src/Lesson_3/fileSort/data.txt", 100);
+        File dataFile = new Generator().generate("src/Lesson_3/fileSort/data.txt", 10000000);
         System.out.println(new Validator(dataFile).isSorted()); // false
         long before = System.currentTimeMillis();
         File sortedFile = new Sorter().sortFile(dataFile);

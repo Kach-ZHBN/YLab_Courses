@@ -8,14 +8,13 @@ public class Sorter {
 
         final int CHANK_SIZE = 1_000_000;
         int tempFilesCounter = 0;
-        List<Long> array = new ArrayList<>();
 
-        /**
-         * Разделяю исходный файл на врменные файлы меньшего размера, которые способен отсортировать в ОЗУ
+        /*
+         * Разделние исходнго файла на врменные файлы меньшего размера, которые способен отсортировать в ОЗУ.
          */
         try (FileInputStream fileInputStream = new FileInputStream(dataFile);
              Scanner scanner = new Scanner(fileInputStream)) {
-
+            List<Long> array = new ArrayList<>();
             while(scanner.hasNextLong()){
                 array.add(scanner.nextLong());
                 if(array.size() >= CHANK_SIZE || !scanner.hasNextLong()){
@@ -32,9 +31,10 @@ public class Sorter {
             }
         }
 
-        /**
+        /*
          * В коде ниже сливаю значения из всех временных файлов в общий выходной файл путем сравнивая первых элементов
-         * каждого временного файла между собой.
+         * каждого временного файла между собой. Если значения во временном файле заканчиваются, удаляю его из
+         * проверяемого перечня. Условием выхода из цикла является закрытие всех временных файлов.
          */
 
         List<Scanner> scannersList = new ArrayList<>();
@@ -60,11 +60,12 @@ public class Sorter {
                 }
             }
             resultPW.flush();
-
-
+        } finally {
+            for (int i = 0; i < tempFilesCounter; i++) {
+                File file = new File("src/Lesson_3/fileSort/temp/temp" + i);
+                file.deleteOnExit();
+            }
         }
-
-
         return resultFile;
     }
 }
