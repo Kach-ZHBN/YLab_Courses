@@ -16,7 +16,7 @@ public class OrgStructureParserImpl implements OrgStructureParser{
     public Employee parseStructure(File csvFile) throws IOException {
         try (FileInputStream fileInputStream = new FileInputStream(csvFile);
         Scanner scanner = new Scanner(fileInputStream)) {
-            //Создание сотрудников с "базовой" информацией, которая достпуна из внешнего файла
+            //Создание сотрудников с "базовой" информацией, которая доступна из внешнего файла
             while(scanner.hasNextLine()){
                 String[] CSVField = scanner.nextLine().split(";");
                 Employee employee = new Employee();
