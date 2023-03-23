@@ -21,7 +21,7 @@ public class OrgStructureParserImpl implements OrgStructureParser{
                 String[] CSVField = scanner.nextLine().split(";");
                 Employee employee = new Employee();
                 employee.setId(Long.parseLong(CSVField[0]));
-                if(CSVField[1] != "")
+                if(!CSVField[1].isEmpty())
                     employee.setBossId(Long.parseLong(CSVField[1]));
                 employee.setName(CSVField[2]);
                 employee.setPosition(CSVField[3]);

@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Set;
 
 public class DatedMapImpl implements DatedMap{
-    Map<String, String> datedMap = new HashMap<>();
-    Map<String, Date> elementDate = new HashMap<>();
+    private Map<String, String> datedMap = new HashMap<>();
+    private Map<String, Date> elementDate = new HashMap<>();
 
     @Override
     public void put(String key, String value) {
@@ -38,10 +38,6 @@ public class DatedMapImpl implements DatedMap{
 
     @Override
     public Date getKeyLastInsertionDate(String key) {
-        if(elementDate.containsKey(key)){
-            return elementDate.get(key);
-        }else {
-            return null;
-        }
+        return elementDate.getOrDefault(key, null);
     }
 }

@@ -18,7 +18,7 @@ public class PasswordValidator {
                 throw new WrongPasswordException("Пароль содержит недопустимые символы");
             if (password.length() > 19)
                 throw new WrongPasswordException("Пароль слишком длинный");
-            if (password != confirmPassword)
+            if (!password.equals(confirmPassword))
                 throw new WrongPasswordException("Пароль и подтверждение не совпадают");
         } catch (WrongPasswordException e) {
             e.printStackTrace();
