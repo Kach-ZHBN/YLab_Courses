@@ -55,12 +55,15 @@ public class Sorter {
                     tempHeaders.set(indexOfMinElement,scannersList.get(indexOfMinElement).nextLong());
                 }else{
                     tempHeaders.remove(indexOfMinElement);
-                    scannersList.get(indexOfMinElement).close();
+                    scannersList.get(indexOfMinElement).close(); // Закрытие сканнера, который достиг конца документа
                     scannersList.remove(indexOfMinElement);
                 }
             }
             resultPW.flush();
         } finally {
+            for(Scanner scanner : scannersList){
+                scanner.close();
+            }
             for (int i = 0; i < tempFilesCounter; i++) {
                 File file = new File("src/Lesson_3/fileSort/temp/temp" + i);
                 file.deleteOnExit();
